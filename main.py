@@ -176,9 +176,14 @@ print("\n***********************************************************************
 # connexion sftp au serveur de destination
 with pysftp.Connection(host=_RMTHOST, username=_USR, password=_DESTPASS) as sftp:
     # copie des fichiers depuis le répertoire temporaire vers le répertoire de destination
-    sftp.put_r(_SOURCE_TEMP, _DEST, preserve_mtime=True)
-    # clôture de la connexion sftp
-    sftp.close()
+    try:
+        sftp.put_r(_SOURCE_TEMP, _DEST, preserve_mtime=True)
+        # clôture de la connexion sftp
+        sftp.close()
+
+    except Exception as ex:
+        sys.exit("Erreur lors de la copie\n "
+         "\n************************ \n\nannulation de la sauvegarde")
 
 # effacement du répertoire temporaire
 if os.path.exists(_SOURCE_TEMP):
