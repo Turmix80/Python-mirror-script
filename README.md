@@ -1,8 +1,10 @@
 Ce script permets une copie de sauvegarde des fichiers contenus dans un répertoire local vers un serveur distant dans un but de sauvegarde.
 
-Auteur : Jérémie Voïta, étudiant à Openclassrooms
+Ce script a été crée dans le cadre d'un projet de cours consistant à automatiser une tâche en lien avec la fonction de sysadmin. 
+Il fonctionne avec les versions 3.8+ de Python et a été testé sur Windows uniquement. 
+Pour les test, une machine virtuelle windows a été crée avec un accès a un réseau LAN partagé avec l'hôte.
 
-Le script fonctionne avec les versions 3.8+ de Python et a été testé sur Windows uniquement.
+En condition réelle, ce script permets de réaliser une sauvegarde de fichiers ( des logs par exemple) depuis un ou plusieurs serveurs vers un serveur d'administration, 
 il ne copie que les fichiers, les répertoires et leur sous-dossiers placés dans le répertoire défini comme source entraîneront une erreur et un arrêt du script.
 
 
@@ -10,13 +12,12 @@ les modules suivants doivent être installés sur la machine source avec pip ins
 -paramiko
 -pysftp
 
-
-ni Python ni modules ne sont nécessaires sur la machine de destination.
+ni Python ni installations de modules ne sont nécessaires sur la machine de destination.
 Aucun droit admin n'est nécessaire au bon fonctionnement du script.
 Le fichier de configuration doit être présent sur la machine source, dans le même répertoire que le script principal.
 
 le script utilise deux fichiers :
-backup_main.py : le script en lui même
+main.py : le script en lui même
 configuration.py : fichier permettant de renseigner les éléments et identifiants propres à chacun.
 Aucune modification n'est nécessaire sur le script principal afin d'éviter toute fausse manipulation.
 
