@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 '''
 Le script fonctionnne avec les versions 3.8+ de Python et a été testé sur Windows uniquement.
 
