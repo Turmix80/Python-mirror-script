@@ -1,11 +1,15 @@
 Ce script permets une copie de sauvegarde des fichiers contenus dans un répertoire local vers un serveur distant dans un but de sauvegarde.
 
+Auteur : Jérémie Voïta, étudiant à Openclassrooms
+
 Le script fonctionne avec les versions 3.8+ de Python et a été testé sur Windows uniquement.
 il ne copie que les fichiers, les répertoires et leur sous-dossiers placés dans le répertoire défini comme source entraîneront une erreur et un arrêt du script.
+
 
 les modules suivants doivent être installés sur la machine source avec pip install:
 -paramiko
 -pysftp
+
 
 ni Python ni modules ne sont nécessaires sur la machine de destination.
 Aucun droit admin n'est nécessaire au bon fonctionnement du script.
