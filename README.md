@@ -1,1 +1,1 @@
-# QR_image_recognition
+# mirror script
