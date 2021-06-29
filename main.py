@@ -128,7 +128,7 @@ sftp.close()
 
 print("**********************************************************************************************************\n")
 
-### FICHIERS A TRANSFERER ###
+### TRANSFERT DES FICHIERS EN LOCAL SUR REPERTOIRE TEMPORAIRE ###
 
 # définition de la liste de comparaison des fichiers locaux et distants
 
@@ -137,6 +137,7 @@ comparaison = [loc_files[x] for x in loc_files if x not in dst_files]
 # affichage des fichiers absents/obsolètes sur le répertoire distant
 print("les fichiers suivants sont absents du répertoire de destination, "
       "ou une version plus ancienne est présente et sera remplaçée: \n ")
+
 print(comparaison)
 
 print("**********************************************************************************************************\n")
@@ -150,9 +151,14 @@ if not os.path.exists(_SOURCE_TEMP):
     os.makedirs(_SOURCE_TEMP, exist_ok=True)
 
 # copie des fichiers à transférer sur répertoire temporaire
-for files in comparaison:
-    shutil.copy2(files, _SOURCE_TEMP)
+try:
+    for f in comparaison:
+        shutil.copy2(f, _SOURCE_TEMP)
 
+except Exception as ex:
+    sys.exit("Erreur: vérifiez que seul des fichiers et non des dossiers sont présents dans le répertoire\n "
+                 "\n************************ \n\nannulation de la sauvegarde")
+    
 # ##EXCLURE FICHIERS SELON LISTE D'EXCLUSION LE CAS ÉCHÉANT###
 
 # se rendre sur le répertoire temporaire
