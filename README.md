@@ -30,4 +30,4 @@ La copie des éléments est réalisée comme suit:
 
 ->/!\ en cas de nouvelle version d'un fichier sur la source, les fichiers plus anciens sur le répertoire distant sont écrasés directement sans message d'avertissement /!\
 
-Il s'agit de mon premier script en Python, il a été testé et est fonctionnel. Toutefois, si vous avez des propositions de modifications, optimisations, adaptations pour les autres plateformes, je serai très heureux de pouvoir les implanter et faire évoluer ce projet!
+Il s'agit de mon premier script en Python, il a été testé et est fonctionnel. Toutefois, si vous avez des propositions de modifications, optimisations, adaptations pour les autres plateformes, je serai très heureux de pouvoir les implémenter et faire évoluer ce projet!
