@@ -32,20 +32,20 @@ _EXCLUSION = '.ini' #('.ini', '.txt')
 
 #chemin du répertoire source sur la machine locale /!\ sur Windows, attention aux séparateurs
 # mettre \\ à la place de /
-_SOURCE = "C:\\Users\\Jerem\\testp6\\"
+_SOURCE = ""
 
 #chemin du répertoire de destination sur la machine distante /!\ sur Windows, attention aux séparateurs
 # mettre \\ à la place de /
-_DEST = "C:\\Users\\turmix\\test_distant_p6\\"
+_DEST = ""
 
 #nom d'utilisateur SSH sur la machine distante
-_USR = 'turmix'
+_USR = ''
 
 #adresse de la machine distante
-_RMTHOST ='192.168.56.103'
+_RMTHOST =''
 
 #mot de passe de connexion SSH à la machine distante
-_DESTPASS='chamallow22'
+_DESTPASS=''
 
 #port de connexion SSH, modifier en cas de port personnalisé
 _PORT=22
