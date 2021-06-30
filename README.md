@@ -13,7 +13,8 @@ les modules suivants doivent être installés sur la machine source avec pip ins
 -pysftp
 
 ni Python ni installations de modules ne sont nécessaires sur la machine de destination.
-Aucun droit admin n'est nécessaire au bon fonctionnement du script.
+Aucun droit admin n'est nécessaire au bon fonctionnement du script. 
+/!\ attention a bien vérifier que l'utilisateur à les droits nécessaire pour uploader des fichiers dans le répertoire source et celui de destination. /!\
 Le fichier de configuration doit être présent sur la machine source, dans le même répertoire que le script principal.
 
 le script utilise deux fichiers :
