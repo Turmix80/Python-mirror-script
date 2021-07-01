@@ -28,24 +28,24 @@ Ce fichier de configuration doit être présent sur la machine source, dans le m
 
 #renseigner ici la terminaison des fichiers à exclure, ou un élément contenu dans son nom (date, élément..)
 # séparez les éléments par une virgule si il y en à plusieurs
-_EXCLUSION = '.ini' #('.ini', '.txt')
+_EXCLUSION = "" #('.ini', '.txt')
 
 #chemin du répertoire source sur la machine locale /!\ sur Windows, attention aux séparateurs
 # mettre \\ à la place de /
-_SOURCE = ""
+_SOURCE = "" # "C:\\user\\xxx\\dossier\\a\\sauvegarder\\"
 
 #chemin du répertoire de destination sur la machine distante /!\ sur Windows, attention aux séparateurs
 # mettre \\ à la place de /
-_DEST = ""
+_DEST = "" # "C:\\user\\xxx\\dossier\\pour\\la\\sauvegarde\\"
 
 #nom d'utilisateur SSH sur la machine distante
-_USR = ''
+_USR = '' #'turmix80'
 
 #adresse de la machine distante
-_RMTHOST =''
+_RMTHOST ='' # "192.168.01.25"
 
 #mot de passe de connexion SSH à la machine distante
-_DESTPASS=''
+_DESTPASS='' # "votremotdepasse"
 
 #port de connexion SSH, modifier en cas de port personnalisé
 _PORT=22
