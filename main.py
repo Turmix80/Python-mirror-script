@@ -177,11 +177,9 @@ for f in files:
         pass
 
     else:
-        for f in files:
-            if f.endswith(_EXCLUSION):
-                print(f, "ne sera pas copié selon la liste d'exclusion")
-                os.remove(f)
-
+        if f.endswith(_EXCLUSION):
+            print(f, "ne sera pas copié selon la liste d'exclusion")
+            os.remove(f)
 
 
 
