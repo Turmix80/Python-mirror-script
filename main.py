@@ -12,7 +12,7 @@ from pprint import pprint
 # importation des variables globales
 from configuration import _USR, _RMTHOST, _DESTPASS, _PORT, _SOURCE, _DEST, _EXCLUSION
 
-# Définition de la variable globale nécessaire à la création du dussier temporaire de copie
+# Définition de la variable globale nécessaire à la création du dossier temporaire de copie
 _SOURCE_TEMP = (_SOURCE + "temp")
 
 # effacer dossier temporaire en cas d'erreur du script précédent
@@ -128,7 +128,7 @@ sftp.close()
 
 print("**********************************************************************************************************\n")
 
-### TRANSFERT DES FICHIERS EN LOCAL SUR REPERTOIRE TEMPORAIRE ###
+### FICHIERS A TRANSFERER ###
 
 # définition de la liste de comparaison des fichiers locaux et distants
 
@@ -137,7 +137,6 @@ comparaison = [loc_files[x] for x in loc_files if x not in dst_files]
 # affichage des fichiers absents/obsolètes sur le répertoire distant
 print("les fichiers suivants sont absents du répertoire de destination, "
       "ou une version plus ancienne est présente et sera remplaçée: \n ")
-
 print(comparaison)
 
 print("**********************************************************************************************************\n")
@@ -151,6 +150,8 @@ if not os.path.exists(_SOURCE_TEMP):
     os.makedirs(_SOURCE_TEMP, exist_ok=True)
 
 # copie des fichiers à transférer sur répertoire temporaire
+
+
 try:
     for f in comparaison:
         shutil.copy2(f, _SOURCE_TEMP)
@@ -158,7 +159,7 @@ try:
 except Exception as ex:
     sys.exit("Erreur: vérifiez que seul des fichiers et non des dossiers sont présents dans le répertoire\n "
                  "\n************************ \n\nannulation de la sauvegarde")
-    
+
 # ##EXCLURE FICHIERS SELON LISTE D'EXCLUSION LE CAS ÉCHÉANT###
 
 # se rendre sur le répertoire temporaire
@@ -167,10 +168,23 @@ os.chdir(_SOURCE_TEMP)
 # définition des fichiers à exclure selon paramètre d'exclusion
 files = [f for f in os.listdir('.') if os.path.isfile(f)]
 
+
+#effacement des fichiers en cas d'exclusion configurée
+
 for f in files:
-    if f.endswith(_EXCLUSION):
-        print(f, "ne sera pas copié selon la liste d'exclusion")
-        os.remove(f)
+    if _EXCLUSION == '':
+        print("pas d'exclusion définie, tous les fichiers seront copiés")
+        pass
+
+    else:
+        for f in files:
+            if f.endswith(_EXCLUSION):
+                print(f, "ne sera pas copié selon la liste d'exclusion")
+                os.remove(f)
+
+
+
+
 
 # changer de répertoire pour libérer le répertoire afin de permettre son effacement en fin de script ( ERR.WIN32 )
 os.chdir(_SOURCE)
@@ -192,5 +206,6 @@ with pysftp.Connection(host=_RMTHOST, username=_USR, password=_DESTPASS) as sftp
          "\n************************ \n\nannulation de la sauvegarde")
 
 # effacement du répertoire temporaire
+
 if os.path.exists(_SOURCE_TEMP):
     shutil.rmtree(_SOURCE_TEMP + "\\")
